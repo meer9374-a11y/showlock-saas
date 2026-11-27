@@ -1,0 +1,9 @@
+{
+  "name": "showlock-saas",
+  "version": "1.0.0",
+  "private": true,
+  "description": "ShowLock AI — Appointment No-Show Reduction & Instant Inquiry Response SaaS for Dental Clinics, Law Firms, and Marketing Agencies",
+  "engines": {
+    "node": ">=22.x"
+  }
+}
