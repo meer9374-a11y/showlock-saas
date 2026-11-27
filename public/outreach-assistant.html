@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>B2B Partnership &amp; Client Outreach Copywriter — ShowLock AI</title>
+  <meta name="description" content="Generate customized, polite introductory partnership messages for Dental Clinics, Law Firms, and Marketing Agencies in one click." />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a href="/" class="brand">
+        <span class="brand-mark">SL</span>
+        <span>ShowLock AI</span>
+        <span class="brand-badge">Outreach Studio</span>
+      </a>
+      <nav class="nav-links">
+        <a href="/">← Back to Main Product</a>
+        <a href="/#calculator">Revenue Calculator</a>
+        <a href="/#generator">Consultation Generator</a>
+        <a href="/outreach-assistant.html" class="active">Outreach Copywriter</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="https://meerwave24.gumroad.com/l/showlock-pro" target="_blank" rel="noopener" class="btn btn-primary btn-sm gumroad-pro-link">ShowLock Pro — $79/mo</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero hero-compact">
+      <div class="container">
+        <div class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          Built-In B2B Partnership &amp; Client Outreach Copywriter
+        </div>
+        <h1 style="max-width:820px;">
+          Craft Polite, Customized <span class="text-gradient">Partnership Introductions</span> in One Click.
+        </h1>
+        <p class="lead" style="max-width:740px;margin-bottom:0;">
+          Enter a prospective clinic, law firm, or agency’s business name and website focus below to generate tailored, consultative partnership emails, concise contact-form notes, and value-first follow-ups.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="tool-shell">
+          <div class="preset-bar">
+            <span class="preset-bar-label">Quick-Load 10 Real US Prospects:</span>
+            <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;flex:1;justify-content:flex-end;">
+              <select id="realProspectSelect" aria-label="Quick-Load 10 Real US Prospects" style="padding:8px 12px;border-radius:10px;border:1px solid #cbd5e1;font-size:0.88rem;font-weight:600;background:#fff;color:var(--text-main);min-width:290px;">
+                <option value="">-- Select a Real US Prospect (1–10) --</option>
+                <option value="0">1. Adair Dental Medicine (Dental • TN)</option>
+                <option value="1">2. Sacramento Dental Medicine (Dental • CA)</option>
+                <option value="2">3. Napa Valley Cosmetic Dentistry (Dental • CA)</option>
+                <option value="3">4. Houston Smile Clinic (Dental • TX)</option>
+                <option value="4">5. Modern Family Law (Law Firm • USA)</option>
+                <option value="5">6. Next Level Injury Law (Law Firm • CA)</option>
+                <option value="6">7. Family Legal Care (Law Firm • NY)</option>
+                <option value="7">8. Ascend Group Media (Agency • USA)</option>
+                <option value="8">9. Maxburst (Agency • NY)</option>
+                <option value="9">10. SEO Image (Agency • NYC)</option>
+              </select>
+              <div class="preset-pills" role="group" aria-label="Sample Prospect Presets">
+                <button type="button" class="pill-btn active" data-prospect-preset="dental">🦷 Sample Dental</button>
+                <button type="button" class="pill-btn" data-prospect-preset="legal">⚖️ Sample Law</button>
+                <button type="button" class="pill-btn" data-prospect-preset="agency">📈 Sample Agency</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="generator-body">
+            <form id="outreachForm">
+              <div class="form-grid-2">
+                <div class="field">
+                  <label for="prospectName">Prospective Business Name *</label>
+                  <input
+                    type="text"
+                    id="prospectName"
+                    required
+                    value="Pacific Coast Smiles"
+                    placeholder="e.g. Pacific Coast Smiles or Apex Growth Media"
+                  />
+                </div>
+
+                <div class="field">
+                  <label for="prospectIndustry">Prospect Industry Category</label>
+                  <select id="prospectIndustry">
+                    <option value="dental" selected>Dental / Medical Clinic</option>
+                    <option value="legal">Law Firm / Legal Practice</option>
+                    <option value="agency">Marketing / Digital Agency</option>
+                  </select>
+                </div>
+
+                <div class="field">
+                  <label for="websiteTopic">Website Topic / Core Service Focus *</label>
+                  <input
+                    type="text"
+                    id="websiteTopic"
+                    required
+                    value="cosmetic veneers, Invisalign & new-patient consultations"
+                    placeholder="e.g. family law consultations, paid search lead generation..."
+                  />
+                </div>
+
+                <div class="field">
+                  <label for="senderName">Your Name (Sign-Off)</label>
+                  <input
+                    type="text"
+                    id="senderName"
+                    value="Jordan Taylor"
+                    placeholder="e.g. Jordan Taylor"
+                  />
+                </div>
+                <div class="field">
+                  <label for="prospectEmail">Prospect Contact Email (Optional — for 1-Click Send)</label>
+                  <input
+                    type="email"
+                    id="prospectEmail"
+                    value=""
+                    placeholder="e.g. hello@pacificcoastsmiles.com"
+                  />
+                </div>
+              </div>
+
+              <div class="generator-actions">
+                <span style="font-size:0.88rem;color:var(--text-muted);" id="outreachStatus">
+                  Ready to copy customized outreach for <strong>Pacific Coast Smiles</strong>.
+                </span>
+                <div style="display:flex;gap:10px;flex-wrap:wrap;">
+                  <button type="button" class="btn btn-outline" id="copyAllBtn">Copy All 3 Variants</button>
+                  <button type="submit" class="btn btn-primary" id="outreachSubmitBtn">
+                    Generate Partnership Copy
+                  </button>
+                </div>
+              </div>
+            </form>
+
+            <div class="templates-stack" id="outreachResults">
+              <!-- Populated dynamically via /api/generate -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <strong style="color:#ffffff;">ShowLock AI</strong> — B2B Partnership &amp; Client Outreach Copywriter.
+      </div>
+      <div class="footer-links">
+        <a href="/">← Back to ShowLock AI Landing Page</a>
+        <a href="/#pricing">Upgrade to ShowLock Pro ($79/mo)</a>
+      </div>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite">Copied to clipboard!</div>
+
+  <script>
+    (function () {
+      const REAL_US_PROSPECTS = [
+        { name: 'Adair Dental Medicine', industry: 'dental', topic: 'cosmetic dentistry, orthodontics & Invisalign consultations', email: 'dr.jennifer@adairdentalmedicine.com' },
+        { name: 'Sacramento Dental Medicine', industry: 'dental', topic: 'cosmetic dentistry, Invisalign & porcelain veneers', email: 'office@sacramentodentalmedicine.com' },
+        { name: 'Napa Valley Cosmetic Dentistry', industry: 'dental', topic: 'cosmetic dentistry & Invisalign Premier Provider consultations', email: 'info@napavalleycosmeticdentistry.com' },
+        { name: 'Houston Smile Clinic', industry: 'dental', topic: 'porcelain veneers, Invisalign Unlimited & cosmetic dentistry', email: '' },
+        { name: 'Modern Family Law', industry: 'legal', topic: 'family law, divorce & free consultation intake', email: 'info@modernfamilylaw.com' },
+        { name: 'Next Level Injury Law', industry: 'legal', topic: 'personal injury, lemon law & free case evaluations', email: 'contact@nextlevelinjurylaw.com' },
+        { name: 'Family Legal Care', industry: 'legal', topic: 'New York family law & free legal advice consultations', email: 'info@familylegalcare.org' },
+        { name: 'Ascend Group Media', industry: 'agency', topic: 'ROI-focused Google/Meta paid ads & SEO growth campaigns', email: 'info@ascendgroupmedia.com' },
+        { name: 'Maxburst', industry: 'agency', topic: 'search engine marketing (SEM), B2B digital strategies & SEO', email: 'hello@maxburst.com' },
+        { name: 'SEO Image', industry: 'agency', topic: 'SEO, AI search optimization & paid advertising retainers', email: '' }
+      ];
+
+      const PROSPECT_PRESETS = {
+        dental: {
+          name: 'Pacific Coast Smiles',
+          industry: 'dental',
+          topic: 'cosmetic veneers, Invisalign & new-patient consultations'
+        },
+        legal: {
+          name: 'Harborview Injury & Trial Law',
+          industry: 'legal',
+          topic: 'free personal injury case evaluations & urgent client intake'
+        },
+        agency: {
+          name: 'Elevate Demand Studio',
+          industry: 'agency',
+          topic: 'B2B paid media retainers & booked growth audit calls'
+        }
+      };
+
+      const toastEl = document.getElementById('toast');
+      let toastTimer = null;
+      let latestMessages = [];
+
+      function showToast(msg) {
+        toastEl.textContent = msg;
+        toastEl.classList.add('show');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => toastEl.classList.remove('show'), 2200);
+      }
+
+      async function copyText(text, btn, toastMsg) {
+        try {
+          await navigator.clipboard.writeText(text);
+        } catch (_e) {
+          const ta = document.createElement('textarea');
+          ta.value = text;
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand('copy');
+          document.body.removeChild(ta);
+        }
+        if (btn) {
+          const prev = btn.textContent;
+          btn.textContent = 'Copied ✓';
+          btn.classList.add('copied');
+          setTimeout(() => {
+            btn.textContent = prev;
+            btn.classList.remove('copied');
+          }, 1800);
+        }
+        showToast(toastMsg || 'Copied to clipboard!');
+      }
+
+      const nameEl = document.getElementById('prospectName');
+      const indEl = document.getElementById('prospectIndustry');
+      const topicEl = document.getElementById('websiteTopic');
+      const senderEl = document.getElementById('senderName');
+      const emailEl = document.getElementById('prospectEmail');
+      const statusEl = document.getElementById('outreachStatus');
+      const resultsEl = document.getElementById('outreachResults');
+      const submitBtn = document.getElementById('outreachSubmitBtn');
+      const copyAllBtn = document.getElementById('copyAllBtn');
+
+      function renderOutreach(messages, businessName) {
+        latestMessages = messages;
+        resultsEl.innerHTML = '';
+
+        messages.forEach((m) => {
+          const card = document.createElement('div');
+          card.className = 'template-card';
+
+          const metaRow = document.createElement('div');
+          metaRow.className = 'template-top';
+
+          const badge = document.createElement('span');
+          badge.className = 'template-badge';
+          badge.textContent = m.badge;
+
+          const chan = document.createElement('span');
+          chan.className = 'template-channel';
+          chan.textContent = m.channel;
+
+          metaRow.appendChild(badge);
+          metaRow.appendChild(chan);
+
+          const title = document.createElement('h4');
+          title.textContent = m.title;
+
+          const pre = document.createElement('pre');
+          pre.className = 'template-pre';
+          pre.textContent = m.body;
+
+          const copyRow = document.createElement('div');
+          copyRow.className = 'copy-row';
+
+          if (m.subject) {
+            const subjBtn = document.createElement('button');
+            subjBtn.type = 'button';
+            subjBtn.className = 'btn btn-outline btn-sm copy-btn';
+            subjBtn.textContent = 'Copy Subject Line';
+            subjBtn.addEventListener('click', () => copyText(m.subject, subjBtn, 'Subject line copied!'));
+            copyRow.appendChild(subjBtn);
+
+            const mailBtn = document.createElement('a');
+            const toAddr = (emailEl && emailEl.value ? emailEl.value.trim() : '');
+            const cleanBody = m.body.replace(/^Subject:.*\n\n/, '');
+            mailBtn.href = 'mailto:' + encodeURIComponent(toAddr) + '?subject=' + encodeURIComponent(m.subject) + '&body=' + encodeURIComponent(cleanBody);
+            mailBtn.className = 'btn btn-accent btn-sm';
+            mailBtn.textContent = 'Open in Email App ↗';
+            copyRow.appendChild(mailBtn);
+          }
+
+          const bodyBtn = document.createElement('button');
+          bodyBtn.type = 'button';
+          bodyBtn.className = 'btn btn-primary btn-sm copy-btn';
+          bodyBtn.textContent = 'Copy Message (1-Click)';
+          bodyBtn.addEventListener('click', () => copyText(m.body, bodyBtn, 'Outreach message copied!'));
+          copyRow.appendChild(bodyBtn);
+
+          card.appendChild(metaRow);
+          card.appendChild(title);
+          card.appendChild(pre);
+          card.appendChild(copyRow);
+          resultsEl.appendChild(card);
+        });
+
+        statusEl.innerHTML = 'Generated 3 customized, polite partnership messages for <strong>' + businessName + '</strong>.';
+      }
+
+      async function generateOutreach() {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Generating...';
+        try {
+          const res = await fetch('/api/generate', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              mode: 'outreach',
+              businessName: nameEl.value,
+              industry: indEl.value,
+              websiteTopic: topicEl.value,
+              senderName: senderEl.value
+            })
+          });
+          const data = await res.json();
+          if (data && data.ok && Array.isArray(data.messages)) {
+            renderOutreach(data.messages, data.businessName);
+          }
+        } catch (_err) {
+          statusEl.textContent = 'Could not reach /api/generate. Please retry.';
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Generate Partnership Copy';
+        }
+      }
+
+      const realProspectSelect = document.getElementById('realProspectSelect');
+      if (realProspectSelect) {
+        realProspectSelect.addEventListener('change', () => {
+          const idx = realProspectSelect.value;
+          if (idx === '') return;
+          const p = REAL_US_PROSPECTS[Number(idx)];
+          if (p) {
+            document.querySelectorAll('[data-prospect-preset]').forEach((b) => b.classList.remove('active'));
+            nameEl.value = p.name;
+            indEl.value = p.industry;
+            topicEl.value = p.topic;
+            if (emailEl) emailEl.value = p.email || '';
+            generateOutreach();
+          }
+        });
+      }
+
+      document.querySelectorAll('[data-prospect-preset]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('[data-prospect-preset]').forEach((b) => b.classList.remove('active'));
+          btn.classList.add('active');
+          const p = PROSPECT_PRESETS[btn.getAttribute('data-prospect-preset')];
+          if (p) {
+            nameEl.value = p.name;
+            indEl.value = p.industry;
+            topicEl.value = p.topic;
+            generateOutreach();
+          }
+        });
+      });
+
+      copyAllBtn.addEventListener('click', () => {
+        if (!latestMessages.length) return;
+        const combined = latestMessages
+          .map((m) => '=== ' + m.title + ' (' + m.channel + ') ===\n' + m.body)
+          .join('\n\n');
+        copyText(combined, copyAllBtn, 'All 3 outreach variants copied!');
+      });
+
+      document.getElementById('outreachForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        generateOutreach();
+      });
+
+      generateOutreach();
+    })();
+  </script>
+</body>
+</html>

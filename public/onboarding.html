@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ShowLock AI Pro — Customer Onboarding &amp; Webhook Simulator</title>
+  <meta name="description" content="Configure your ShowLock AI Pro appointment protection workflow, test the live /api/webhook endpoint, and connect your calendar." />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a href="/" class="brand">
+        <span class="brand-mark">SL</span>
+        <span>ShowLock AI</span>
+        <span class="brand-badge">Pro Onboarding</span>
+      </a>
+      <nav class="nav-links">
+        <a href="/">Main Product</a>
+        <a href="/outreach-assistant.html">Outreach Copywriter</a>
+        <a href="/onboarding.html" class="active">Pro Onboarding</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="https://meerwave24.gumroad.com/l/showlock-pro" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Manage Pro ($79/mo)</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero hero-compact">
+      <div class="container">
+        <div class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          ShowLock AI Pro • Live Fulfillment &amp; Webhook Setup
+        </div>
+        <h1 style="max-width:820px;">
+          Activate Your <span class="text-gradient">Appointment Protection</span> Workflow in 3 Minutes.
+        </h1>
+        <p class="lead" style="max-width:740px;margin-bottom:0;">
+          Configure your practice details below to generate your live <code>/api/webhook</code> payload and test automated <strong>“C” (Confirm)</strong> / <strong>“R” (Reschedule)</strong> routing for Zapier, Make, Calendly, or Twilio.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="tool-shell">
+          <div class="preset-bar">
+            <span class="preset-bar-label">Step 1 • Configure Practice &amp; Calendar Integration</span>
+            <span style="font-size:0.84rem;color:var(--accent-dark);font-weight:700;">Endpoint: POST /api/webhook</span>
+          </div>
+
+          <div class="generator-body">
+            <form id="onboardForm">
+              <div class="form-grid-2">
+                <div class="field">
+                  <label for="obBusiness">Practice / Agency Name *</label>
+                  <input type="text" id="obBusiness" required value="BrightSmile Dental Care" />
+                </div>
+                <div class="field">
+                  <label for="obIndustry">Industry Vertical</label>
+                  <select id="obIndustry">
+                    <option value="dental" selected>Dental / Medical Clinic</option>
+                    <option value="legal">Law Firm / Legal Practice</option>
+                    <option value="agency">Marketing / Digital Agency</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="obCalendar">Booking / Calendar URL (Calendly, Cal.com, Jane, etc.)</label>
+                  <input type="url" id="obCalendar" value="https://cal.com/brightsmile-dental/consult" />
+                </div>
+                <div class="field">
+                  <label for="obTestReply">Simulate Patient / Lead SMS Reply</label>
+                  <select id="obTestReply">
+                    <option value="C" selected>Reply "C" — Confirm Appointment</option>
+                    <option value="R">Reply "R" — Reschedule (Send 3 Open Slots)</option>
+                    <option value="Can I park in the back?">Custom Question — Staff Handoff</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="generator-actions">
+                <span style="font-size:0.88rem;color:var(--text-muted);" id="obStatus">
+                  Click “Test Live Webhook” to verify your endpoint and preview the Zapier/Make JSON config.
+                </span>
+                <button type="submit" class="btn btn-primary" id="obSubmitBtn">Test Live Webhook &amp; Generate Setup</button>
+              </div>
+            </form>
+
+            <div class="templates-grid" style="grid-template-columns:1fr 1fr;" id="obResults">
+              <div class="template-card">
+                <div>
+                  <div class="template-top">
+                    <span class="template-badge">Live API Response</span>
+                    <span class="template-channel">POST /api/webhook</span>
+                  </div>
+                  <h4>Automated Reply Output</h4>
+                  <pre class="template-pre" id="obWebhookOut">Click "Test Live Webhook &amp; Generate Setup" above...</pre>
+                </div>
+              </div>
+
+              <div class="template-card">
+                <div>
+                  <div class="template-top">
+                    <span class="template-badge">Zapier / Make / Twilio</span>
+                    <span class="template-channel">Ready-to-Paste JSON</span>
+                  </div>
+                  <h4>Webhook Integration Payload</h4>
+                  <pre class="template-pre" id="obCurlOut"></pre>
+                </div>
+                <div class="copy-row">
+                  <button type="button" class="btn btn-outline btn-sm copy-btn" id="copyCurlBtn">Copy Integration Payload</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite">Copied!</div>
+
+  <script>
+    (function () {
+      const bizEl = document.getElementById('obBusiness');
+      const indEl = document.getElementById('obIndustry');
+      const calEl = document.getElementById('obCalendar');
+      const replyEl = document.getElementById('obTestReply');
+      const statusEl = document.getElementById('obStatus');
+      const webhookOut = document.getElementById('obWebhookOut');
+      const curlOut = document.getElementById('obCurlOut');
+      const copyBtn = document.getElementById('copyCurlBtn');
+      const toastEl = document.getElementById('toast');
+
+      async function runTest() {
+        const payload = {
+          action: 'sms_reply',
+          businessName: bizEl.value,
+          industry: indEl.value,
+          calendarUrl: calEl.value,
+          clientName: 'Sarah',
+          serviceType: 'Consultation',
+          appointmentTime: 'Tomorrow at 2:00 PM',
+          replyText: replyEl.value
+        };
+
+        curlOut.textContent = JSON.stringify({
+          webhookUrl: window.location.origin + '/api/webhook',
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          sampleBody: payload
+        }, null, 2);
+
+        try {
+          const res = await fetch('/api/webhook', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+          const data = await res.json();
+          webhookOut.textContent = JSON.stringify(data, null, 2);
+          statusEl.innerHTML = 'Live webhook verified! Detected intent: <strong>' + (data.intent || 'OK') + '</strong>';
+        } catch (_e) {
+          webhookOut.textContent = 'Error contacting /api/webhook';
+        }
+      }
+
+      copyBtn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(curlOut.textContent);
+        } catch (_e) {}
+        toastEl.textContent = 'Webhook payload copied!';
+        toastEl.classList.add('show');
+        setTimeout(() => toastEl.classList.remove('show'), 2000);
+      });
+
+      document.getElementById('onboardForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        runTest();
+      });
+
+      runTest();
+    })();
+  </script>
+</body>
+</html>
